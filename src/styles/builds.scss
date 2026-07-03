@@ -1,0 +1,236 @@
+.builds {
+  padding-top: calc(var(--nav-h) + 50px);
+
+  &__head {
+    align-items: center;
+    text-align: center;
+
+    p {
+      margin-inline: auto;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 54px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 26px;
+  }
+
+  &__empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 60px 0;
+  }
+}
+
+// ── build card ───────────────────────────────────────
+.bcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--card-accent) 55%, transparent);
+    box-shadow: 0 24px 60px -18px color-mix(in srgb, var(--card-accent) 40%, transparent);
+
+    .bcard__glow {
+      opacity: 1;
+    }
+
+    .bcard__svg {
+      transform: translateY(-6px) scale(1.03);
+    }
+  }
+
+  &__glow {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    height: 170px;
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--card-accent) 35%, transparent), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__company {
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--card-accent);
+  }
+
+  &__tier {
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+
+    &--flagship {
+      background: var(--grad-hot);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    &--performance {
+      background: rgba(108, 92, 231, 0.2);
+      color: #b3a8ff;
+      border-color: rgba(108, 92, 231, 0.4);
+    }
+  }
+
+  &__art {
+    display: grid;
+    place-items: center;
+    padding: 6px 0 2px;
+  }
+
+  &__svg {
+    width: 170px;
+    height: auto;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+    .pc-fan {
+      animation: spin 1.6s linear infinite;
+    }
+    .pc-fan--slow {
+      animation-duration: 3.4s;
+    }
+    .pc-rgb-strip {
+      animation: pulseGlow 2.6s ease-in-out infinite;
+    }
+  }
+
+  &__model {
+    font-size: 21px;
+    margin: 6px 0 14px;
+  }
+
+  &__perf {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+
+    span {
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    b {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--card-accent);
+    }
+
+    &-track {
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      overflow: hidden;
+    }
+
+    &-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--card-accent), var(--card-accent2));
+      box-shadow: 0 0 12px color-mix(in srgb, var(--card-accent) 70%, transparent);
+    }
+  }
+
+  &__specs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 20px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--muted);
+
+      svg {
+        color: var(--card-accent);
+        flex-shrink: 0;
+        opacity: 0.85;
+      }
+    }
+  }
+
+  &__foot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+
+    s {
+      color: var(--muted);
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    strong {
+      font-family: var(--font-display);
+      font-size: 24px;
+    }
+  }
+
+  &__add {
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: #04050a;
+    background: linear-gradient(120deg, var(--card-accent), var(--card-accent2));
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      box-shadow: 0 6px 26px color-mix(in srgb, var(--card-accent) 55%, transparent);
+      filter: brightness(1.1);
+    }
+
+    &--done {
+      background: linear-gradient(120deg, var(--success), #00d4ff);
+    }
+  }
+}
