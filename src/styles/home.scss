@@ -101,8 +101,8 @@
 
   &__art-ring {
     position: absolute;
-    width: 420px;
-    height: 420px;
+    width: min(420px, 94vw);
+    height: min(420px, 94vw);
     border-radius: 50%;
     border: 1px dashed rgba(108, 92, 231, 0.35);
     animation: spin 40s linear infinite;

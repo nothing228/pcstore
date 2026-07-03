@@ -36,6 +36,11 @@
 
 html {
   scroll-behavior: smooth;
+  // both html and body need this: mobile browsers allow horizontal panning
+  // (which makes the fixed header appear to slide) if only body is clipped;
+  // clip is stricter than hidden — falls back to hidden where unsupported
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -44,6 +49,7 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
